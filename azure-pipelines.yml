@@ -1,0 +1,22 @@
+trigger:
+  branches:
+    include:
+      - main  # Define the branch that triggers the pipeline
+
+pool:
+  vmImage: 'ubuntu-latest'  # Use an Ubuntu agent
+
+steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.x'  # Use Python 3.x
+    addToPath: true
+
+- script: |
+    python -m pip install --upgrade pip
+    pip install -r requirements.txt
+  displayName: 'Install Dependencies'
+
+- script: |
+    python cisco_ise_1.py  # This script should include Cisco ISE SDK usage
+  displayName: 'Run Cisco ISE Script'
