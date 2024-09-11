@@ -25,6 +25,10 @@ steps:
 - script: |
     ls -al       # Debugging: list all files to ensure cisco_ise_1.py exists
     pwd          # Debugging: print the current working directory
+    uname -a
+    hostname
+    ifconfig
+    dig google.com
     python hello_world.py
     python3 cisco_ise_1.py
   displayName: 'Pipeline Test 1'
