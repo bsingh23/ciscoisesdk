@@ -7,6 +7,8 @@ pool:
   vmImage: 'ubuntu-latest'  # Use an Ubuntu agent
 
 steps:
+- checkout: self  # Ensure the repository is checked out
+
 - task: UsePythonVersion@0
   inputs:
     versionSpec: '3.x'  # Use Python 3.x
@@ -16,5 +18,10 @@ steps:
     python -m pip install --upgrade pip
     pip install -r requirements.txt
     pip install -r requirements-dev.txt
-    python cisco_ise_1.py
-  displayName: 'Do everthing here'
+  displayName: 'Install Dependencies'
+
+- script: |
+    ls -al       # Debugging: list all files to ensure cisco_ise_1.py exists
+    pwd          # Debugging: print the current working directory
+    python3 cisco_ise_1.py
+  displayName: 'Pipeline Test 1'
