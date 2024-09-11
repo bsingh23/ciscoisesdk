@@ -18,5 +18,5 @@ steps:
   displayName: 'Install Dependencies'
 
 - script: |
-    python cisco_ise_1.py  # This script should include Cisco ISE SDK usage
+    python3 cisco_ise_1.py
   displayName: 'Run Cisco ISE Script'
